@@ -17,8 +17,10 @@ headlessly for scripting/CI, or embedded in editors via the Agent Client
 Protocol (ACP).
 
 [Installing the released binary](#installing-the-released-binary) ·
+[Power features](#power-features) ·
 [Building from source](#building-from-source) ·
 [Documentation](#documentation) ·
+[Examples](#examples-fork-overlay) ·
 [Repository layout](#repository-layout) ·
 [Development](#development) ·
 [Contributing](#contributing) ·
@@ -26,7 +28,10 @@ Protocol (ACP).
 
 ![Grok Build TUI](https://media.x.ai/v1/website/universe-tui-screenshot-6f7a0837.png)
 
-**Learn more about Grok Build at [x.ai/cli](https://x.ai/cli)**
+**Learn more about Grok Build at [x.ai/cli](https://x.ai/cli)** ·
+[docs](https://docs.x.ai/build/overview) ·
+[changelog](https://x.ai/build/changelog) ·
+[open source](https://x.ai/open-source)
 
 This repository contains the Rust source for the `grok` CLI/TUI and its agent
 runtime. It is synced periodically from the SpaceXAI monorepo.
@@ -34,13 +39,20 @@ runtime. It is synced periodically from the SpaceXAI monorepo.
 A small `SOURCE_REV` file at the root records the full monorepo commit SHA
 for the version of the code present in this tree.
 
+> **Rosary-mom fork overlay** — this fork also ships practical docs and
+> copy-paste examples under [`docs/`](docs/) and [`examples/`](examples/)
+> (worktrees, dashboard, workflows, deep research, goals, personas, and more).
+> See [`docs/FORK.md`](docs/FORK.md). They configure the installed `grok`
+> binary; they do not replace monorepo syncs of the harness itself.
+
 </div>
 
 ---
 
 ## Installing the released binary
 
-Prebuilt binaries are published for macOS, Linux, and Windows:
+Prebuilt binaries are published for macOS, Linux, and Windows. **Prefer the
+installer** over building from source unless you are changing the harness.
 
 ```sh
 curl -fsSL https://x.ai/cli/install.sh | bash   # macOS / Linux / Git Bash
@@ -48,8 +60,41 @@ irm https://x.ai/cli/install.ps1 | iex          # Windows PowerShell
 grok --version
 ```
 
+On Windows, open a project folder and run `grok` from PowerShell, Windows
+Terminal, or your editor’s integrated terminal. First launch opens a browser
+for authentication.
+
 See the [changelog](https://x.ai/build/changelog) for the latest fixes,
 features, and improvements in each release.
+
+## Power features
+
+Grok Build is no longer “only a chat that edits files.” High-value capabilities
+include parallel **git worktrees**, the **Agent Dashboard**, multi-agent
+**workflows**, verified **Deep Research**, autonomous **Goal** mode, background
+subagents, custom agents/personas, strict **Plan** mode, real **rewind/undo**,
+permissions/sandbox, Claude/Cursor/Codex continuity, skills/MCP/plugins/hooks,
+voice and media, Mermaid diagrams, web/X search, headless CI (`grok -p`),
+`/loop`, cross-session **memory**, multi-machine sessions, ACP, and this
+**open-source harness**.
+
+| Start here | What you get |
+|------------|----------------|
+| [`docs/for-everyone.md`](docs/for-everyone.md) | Plain-language onboarding (non-technical) |
+| [`docs/power-features.md`](docs/power-features.md) | All 24 capabilities → slash commands + user-guide links |
+| [`examples/`](examples/) | Agents, personas, workflows, config snippets, `/power-features` skill |
+| `/tutorial` · `/docs` inside the TUI | Built-in product guides |
+
+Quick tries after install:
+
+```text
+/dashboard
+/plan describe the change you want
+/deep-research <your research question>
+/goal <long-running objective>
+/workflow codebase-audit {"root":"src"}
+/remember a fact you care about later
+```
 
 ## Building from source
 
@@ -69,8 +114,9 @@ Requirements:
 
 - **protoc** — proto codegen resolves [`bin/protoc`](bin/protoc) via DotSlash,
   or falls back to a `protoc` on `PATH` / `$PROTOC`.
-- macOS and Linux are supported build hosts; Windows builds are best-effort
-  and not currently tested from this tree.
+- macOS and Linux are supported build hosts; **Windows source builds are
+  best-effort** and not currently tested from this tree. On Windows, use the
+  [released binary](#installing-the-released-binary) for daily work.
 
 ```sh
 cargo run -p xai-grok-pager-bin              # build + launch the TUI
@@ -92,10 +138,25 @@ The user guide ships with the pager crate:
 — getting started, keyboard shortcuts, slash commands, configuration, theming,
 MCP servers, skills, plugins, hooks, headless mode, sandboxing, and more.
 
+Fork overlay (this branch / fork):
+
+- [`docs/power-features.md`](docs/power-features.md) — capability → command map
+- [`docs/for-everyone.md`](docs/for-everyone.md) — non-technical start
+- [`docs/FORK.md`](docs/FORK.md) — how the overlay relates to monorepo syncs
+
+## Examples (fork overlay)
+
+Installable agents, personas, multi-agent workflows, sandbox deny ideas, and a
+`/power-features` skill:
+
+→ **[`examples/README.md`](examples/README.md)**
+
 ## Repository layout
 
 | Path | Contents |
 |------|----------|
+| `docs/` | Fork overlay guides (power features, non-technical, fork notes) |
+| `examples/` | Copy-paste agents, personas, workflows, config, skills |
 | `crates/codegen/xai-grok-pager-bin` | Composition-root package; builds the `xai-grok-pager` binary |
 | `crates/codegen/xai-grok-pager` | The TUI: scrollback, prompt, modals, rendering |
 | `crates/codegen/xai-grok-shell` | Agent runtime + leader/stdio/headless entry points |

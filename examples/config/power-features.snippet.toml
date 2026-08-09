@@ -1,0 +1,29 @@
+# Merge selected sections into ~/.grok/config.toml (or project .grok/config.toml).
+# These are recommendations for the power-features overlay — not defaults forced by the harness.
+
+# --- Agent dashboard (multi-session / worktrees) ---
+[dashboard]
+enabled = true
+
+# --- Subagents (background by default in modern builds) ---
+[subagents]
+enabled = true
+# Optional default capability for custom agents you define:
+# default_capability_mode = "read-write"
+
+# Example persona reference (files under ~/.grok/personas/ also work):
+# [subagents.personas.concise-reporter]
+# instructions_file = "personas/concise-reporter.toml"
+
+# --- Memory (experimental beyond /remember) ---
+# Enable with CLI flag --experimental-memory or env GROK_MEMORY=1, then configure a backend.
+# [memory]
+# enabled = true
+
+# --- Permissions posture (safer daily driver) ---
+# Prefer Auto for routine reads; keep Always-Approve off unless you trust the tree.
+# Use /auto and /always-approve interactively; or set mode in settings UI.
+
+# --- Optional: surface worktree hygiene ---
+# Periodically: grok du
+# Then: grok worktree gc --max-age 7d --dry-run
