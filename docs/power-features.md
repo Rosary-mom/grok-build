@@ -56,7 +56,7 @@ Online: [docs.x.ai/build](https://docs.x.ai/build/overview) ·
 ### B. Large PR or whole-repo review
 
 1. Save or copy a workflow under `.grok/workflows/` (see [examples/workflows](../examples/workflows/)).
-2. Run `/workflow review-changes {"target":"origin/main...HEAD"}` (or your script name).
+2. Run `/workflow review-changes {"target":"origin/main...HEAD"}`, or `/workflow hermes-office-feature {"goal":"...","root":"examples"}` from a git worktree.
 3. Watch phases and agents in `/workflows`.
 4. Prefer workflows that **adversarially verify** findings before the final report.
 

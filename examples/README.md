@@ -39,6 +39,7 @@ Restart `grok` (or open a new session). Then try:
 | `/config-agents` | See custom agent definitions |
 | `/workflow triage-issues {"root":"."}` | Multi-agent workflow |
 | `/workflow codebase-audit {"root":"crates"}` | Read-only audit fan-out |
+| `/workflow hermes-office-feature {"goal":"...","root":"examples"}` | Office cycle in the current worktree: plan, investigate, implement, verify |
 | `/dashboard` | Multi-session / worktree control |
 
 ## Layout
