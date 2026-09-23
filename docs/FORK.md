@@ -11,7 +11,7 @@ The `rosary/power-features` branch (and any merge into `main` you choose) adds
 
 | Path | Purpose |
 |------|---------|
-| [`docs/power-features.md`](power-features.md) | Map of the 24 “must-know” product capabilities → real slash commands and user-guide pages |
+| [`docs/power-features.md`](power-features.md) | Map of the 24 "must-know" product capabilities → real slash commands and user-guide pages |
 | [`docs/for-everyone.md`](for-everyone.md) | Non-technical onboarding (plain language) |
 | [`examples/`](../examples/) | Copy-paste agents, personas, workflows, config snippets, and a skill |
 
